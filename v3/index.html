@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>George Mitrev</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaqueries.css">
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div class="logo"> George Mitrev </div>
+        <div>
+            <ul class="nav-pages">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#hobbies">Hobbies & Interests</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav id="ham-nav">
+        <div class="logo"> George Mitrev </div>
+        <div class="ham-menu">
+            <div class="ham-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="ham-menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+                <li><a href="#hobbies" onclick="toggleMenu()">Hobbies & Interests</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact Me</a></li>
+            </div>
+        </div>
+    </nav>
+    <section id="hero">
+        <div class="section__pic-container">
+            <img src="./assets/profile-pic.png" alt="George Mitrev Profile Picture" />
+        </div>
+        <div class="section__text">
+            <p class="section__text__p1">Hello, I'm</p>
+            <h1 class="title">George Mitrev</h1>
+            <p class="section__text__p2">Engineer | Entrepreneur | Innovator</p>
+            <div class="btn-container">
+                <button class="btn btn-color-2" onclick="window.open('./assets/resume.pdf')">Download CV</button>
+                <button class="btn btn-color-1" onclick="location.href='./#contact'">Contact Me</button>
+            </div>
+            <div id="socials-container">
+                <img src="./assets/linkedin.png" alt="My LinkedIn Profile" class="icon" onclick="location.href='https://www.linkedin.com/in/georgemitrev/'"/>
+                <img src="./assets/github.png" alt="My GitHub Profile" class="icon" onclick="location.href='https://github.com/GeorgeMitrev'"/>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 class="title">About Me</h1>
+        <div class="section-container">
+            <div class="section__pic-container">
+                <img src="./assets/about-pic.png" alt="Second Profile Picture" class="about-pic"/>
+            </div>
+            <div class="about-details-container">
+                <div class="details-container">
+                    <img src="./assets/experience.png" alt="Experience Icon" class="icon"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
