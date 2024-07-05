@@ -84,6 +84,9 @@
     .text-container {
         text-align: justify;
     }
+    .contact-info-upper-container {
+        gap: 1rem;
+    }
     footer {
         height: 15vh;
     }
