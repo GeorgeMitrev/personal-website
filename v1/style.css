@@ -9,23 +9,24 @@
     background-color: #050908;
     display: grid;
     place-items: center;
-    padding: clamp(1.44rem, 1.12rem + 1.58vw, 2.25rem);
+    /* padding: clamp(1.44rem, 1.12rem + 1.58vw, 2.25rem); */
     font-family: sans-serif;
     background: #ffffff;
     color: #f3f3f3;
   }
   
   .gallery-track {
-    position: fixed;
+    /* position: fixed; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.25rem;
-    padding: 0.25rem;
+    /* padding: 0.25rem; */
     will-change: transform;
+    width: 100vw;
   }
   
   .card {
-    height: 400px;
+    height: 500px;
     overflow: hidden;
   }
   
@@ -92,6 +93,8 @@
   }
   
   h1 {
+    padding-top: 20vh;
+    padding-bottom: 20vh;
     font-size: clamp(2.49rem, 0.5rem + 9.96vw, 7.59rem);
     line-height: 1.1;
     font-family: "Inter", sans-serif;
