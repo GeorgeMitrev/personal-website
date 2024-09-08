@@ -1,0 +1,112 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    min-height: 100lvh;
+    background-color: #050908;
+    display: grid;
+    place-items: center;
+    /* padding: clamp(1.44rem, 1.12rem + 1.58vw, 2.25rem); */
+    font-family: sans-serif;
+    background: #000;
+    color: #f3f3f3;
+  }
+  
+  .gallery-track {
+    /* position: fixed; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.25rem;
+    /* padding: 0.25rem; */
+    will-change: transform;
+    width: 100vw;
+  }
+  
+  .card {
+    height: 500px;
+    overflow: hidden;
+  }
+  
+  .card .card-image-wrapper {
+    height: 135%;
+    will-change: transform;
+  }
+  
+  .card .card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  @media (width < 800px) {
+    .gallery-track {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (width < 550px) {
+    .gallery-track {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  
+  .circle {
+    --circle-size: 40px;
+    position: fixed;
+    height: var(--circle-size);
+    width: var(--circle-size);
+    border: 1px solid white;
+    border-radius: 100%;
+    top: calc(var(--circle-size) / 2 * -1);
+    left: calc(var(--circle-size) / 2 * -1);
+    pointer-events: none;
+  }
+  
+  /* THE GRADIENT */
+  h1 {
+    /* Check out Josh's rad generator: https://www.joshwcomeau.com/gradient-generator/ */
+    background-image: linear-gradient(
+      75deg,
+      hsl(260deg 72% 50%) 0%,
+      hsl(265deg 77% 50%) 20%,
+      hsl(270deg 83% 50%) 29%,
+      hsl(275deg 89% 50%) 36%,
+      hsl(279deg 95% 50%) 43%,
+      hsl(284deg 100% 50%) 50%,
+      hsl(283deg 95% 55%) 57%,
+      hsl(282deg 89% 61%) 64%,
+      hsl(280deg 84% 66%) 71%,
+      hsl(279deg 78% 71%) 80%,
+      hsl(278deg 73% 77%) 100%
+    );
+  
+    /* Clips the background with the text to make it appear
+       that the text has a gradient */
+    background-clip: text;
+    -webkit-background-clip: text;
+  
+    /* Make sure you make the color transparent so the gradient can show */
+    color: transparent;
+  }
+  
+  h1 {
+    padding-top: 40vh;
+    padding-bottom: 40vh;
+    font-size: clamp(2.49rem, 0.5rem + 9.96vw, 7.59rem);
+    line-height: 1.1;
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    max-width: 20ch;
+  }
+  
+  p {
+    font-size: 1rem;
+    margin-top: 2em;
+  }  

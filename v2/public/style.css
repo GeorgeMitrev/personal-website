@@ -1,108 +1,282 @@
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+/* Add smooth scrolling to the page */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  font-family: sans-serif;
+  color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 1s ease;
+}
+
+.gallery-title {
+  display: flex;
+  position: relative;
+  color: #f3f3f3;
+  background-image: linear-gradient(
+    75deg,
+    hsl(260deg 72% 50%) 0%,
+    hsl(265deg 77% 50%) 20%,
+    hsl(270deg 83% 50%) 29%,
+    hsl(275deg 89% 50%) 36%,
+    hsl(279deg 95% 50%) 43%,
+    hsl(284deg 100% 50%) 50%,
+    hsl(283deg 95% 55%) 57%,
+    hsl(282deg 89% 61%) 64%,
+    hsl(280deg 84% 66%) 71%,
+    hsl(279deg 78% 71%) 80%,
+    hsl(278deg 73% 77%) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 900;
+  font-size: clamp(2.49rem, 0.5rem + 9.96vw, 7.59rem);
+  max-width: 21ch;
+  line-height: 1.1;
+  margin: 0 auto;
+  width: 100vw;
+  align-items: center;
+  height: 84vh;
+  padding: 0 20px; /* Adds space on the left and right sides */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.gallery {
+  column-gap: 0;
+  padding: 0.25rem;
+  width: 100vw;
+}
+
+
+@media (min-width: 480px) {
+  .gallery {
+    column-count: 2;
   }
-  
-  body {
-    min-height: 100lvh;
-    background-color: #050908;
-    display: grid;
-    place-items: center;
-    /* padding: clamp(1.44rem, 1.12rem + 1.58vw, 2.25rem); */
-    font-family: sans-serif;
-    background: #ffffff;
-    color: #f3f3f3;
+}
+
+@media (min-width: 1260px) {
+  .gallery {
+    column-count: 3;
   }
-  
-  .gallery-track {
-    /* position: fixed; */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.25rem;
-    /* padding: 0.25rem; */
-    will-change: transform;
-    width: 100vw;
+}
+
+.gallery-image {
+  position: relative;
+  margin: 0;
+  padding: 0.25rem;
+}
+
+.gallery-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.gallery-image-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0);
+  padding: 1em;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  text-align: center;
+}
+
+.gallery-image:hover .gallery-image-caption {
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+/* CODE FOR MOVING CAMERA */
+.moving {
+  animation: attempt 1s ease-in-out infinite;
+  color: white;
+  /* margin-bottom: 65px; */
+}
+
+@keyframes attempt {
+  0%,
+  100% {
+      transform: translate(0, 0);
   }
-  
-  .card {
-    height: 500px;
-    overflow: hidden;
+
+  50% {
+      transform: translate(0, 5px);
   }
-  
-  .card .card-image-wrapper {
-    height: 135%;
-    will-change: transform;
-  }
-  
-  .card .card-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  @media (width < 800px) {
-    .gallery-track {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (width < 550px) {
-    .gallery-track {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
-  
-  .circle {
-    --circle-size: 40px;
-    position: fixed;
-    height: var(--circle-size);
-    width: var(--circle-size);
-    border: 1px solid white;
-    border-radius: 100%;
-    top: calc(var(--circle-size) / 2 * -1);
-    left: calc(var(--circle-size) / 2 * -1);
-    pointer-events: none;
-  }
-  
-  /* THE GRADIENT */
-  h1 {
-    /* Check out Josh's rad generator: https://www.joshwcomeau.com/gradient-generator/ */
-    background-image: linear-gradient(
-      75deg,
-      hsl(260deg 72% 50%) 0%,
-      hsl(265deg 77% 50%) 20%,
-      hsl(270deg 83% 50%) 29%,
-      hsl(275deg 89% 50%) 36%,
-      hsl(279deg 95% 50%) 43%,
-      hsl(284deg 100% 50%) 50%,
-      hsl(283deg 95% 55%) 57%,
-      hsl(282deg 89% 61%) 64%,
-      hsl(280deg 84% 66%) 71%,
-      hsl(279deg 78% 71%) 80%,
-      hsl(278deg 73% 77%) 100%
-    );
-  
-    /* Clips the background with the text to make it appear
-       that the text has a gradient */
-    background-clip: text;
-    -webkit-background-clip: text;
-  
-    /* Make sure you make the color transparent so the gradient can show */
-    color: transparent;
-  }
-  
-  h1 {
-    padding-top: 20vh;
-    padding-bottom: 20vh;
-    font-size: clamp(2.49rem, 0.5rem + 9.96vw, 7.59rem);
-    line-height: 1.1;
-    font-family: "Inter", sans-serif;
-    font-weight: 900;
-    max-width: 20ch;
-  }
-  
-  p {
-    font-size: 1rem;
-    margin-top: 2em;
-  }  
+}
+
+.camera {
+  position: absolute;
+  top: 85vh; /* Places the arrow directly below the text */
+  right: 1ch; /* Positions the arrow at the center of the container */
+  transform: translateX(calc(10ch)); /* Shifts the arrow to the right based on text width (half of 20ch) */
+  margin-top: 20px; /* Adds space between the text and the arrow */
+  width: 50px;
+  fill: linear-gradient(
+    75deg,
+    hsl(260deg 72% 50%) 0%,
+    hsl(265deg 77% 50%) 20%,
+    hsl(270deg 83% 50%) 29%,
+    hsl(275deg 89% 50%) 36%,
+    hsl(279deg 95% 50%) 43%,
+    hsl(284deg 100% 50%) 50%,
+    hsl(283deg 95% 55%) 57%,
+    hsl(282deg 89% 61%) 64%,
+    hsl(280deg 84% 66%) 71%,
+    hsl(279deg 78% 71%) 80%,
+    hsl(278deg 73% 77%) 100%
+  );
+}
+
+/* CODE FOR LIGHT & DARK MODE */
+.svg-checkbox {
+  display: none;
+}
+
+.svg-label {
+  cursor: pointer;
+}
+
+.svg-label svg {
+  width: 100px;
+  height: 100px;
+}
+
+/* When the checkbox is checked, show the glasses SVG */
+.svg-checkbox:checked + .svg-label .glasses {
+  display: block;
+}
+
+.svg-checkbox:checked + .svg-label .sunglasses {
+  display: none;
+}
+
+/* When the checkbox is unchecked, show the sunglasses SVG */
+.svg-checkbox:not(:checked) + .svg-label .glasses {
+  display: none;
+}
+
+.svg-checkbox:not(:checked) + .svg-label .sunglasses {
+  display: block;
+}
+
+.light-dark {
+  position: absolute;
+  top: 85vh; /* Places the arrow directly below the text */
+  left: 1ch; /* Positions the arrow at the center of the container */
+  transform: translateX(calc(10ch)); /* Shifts the arrow to the right based on text width (half of 20ch) */
+  margin-top: 20px; /* Adds space between the text and the arrow */
+  width: 50px;
+  fill: linear-gradient(
+    75deg,
+    hsl(260deg 72% 50%) 0%,
+    hsl(265deg 77% 50%) 20%,
+    hsl(270deg 83% 50%) 29%,
+    hsl(275deg 89% 50%) 36%,
+    hsl(279deg 95% 50%) 43%,
+    hsl(284deg 100% 50%) 50%,
+    hsl(283deg 95% 55%) 57%,
+    hsl(282deg 89% 61%) 64%,
+    hsl(280deg 84% 66%) 71%,
+    hsl(279deg 78% 71%) 80%,
+    hsl(278deg 73% 77%) 100%
+  );
+}
+
+/* NAVBAR */
+#theheader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8vh;
+  font-family: "Oswald";
+  background-color: #ffffff;
+  transition: background-color 1s ease;
+  padding: 0 20px; /* Adds space on the left and right sides */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+  width: 100%; /* Makes the header span the full width */
+  max-width: 100vw; /* Prevents overflow */
+}
+
+#logo {
+  font-size: 2em;
+  margin: 0;
+  text-decoration: none;
+  color: #050908;
+  transition: 0.5s all;
+  cursor: default;
+}
+
+#current {
+  color: #ff4629;
+  border-bottom: 3px solid #333;
+}
+
+.icons {
+  display: flex;
+  gap: 1em;
+}
+
+.icon {
+  display: inline-block;
+  transition: 0.5s all;
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  transition: 0.5s all;
+}
+
+.icon-checkbox {
+  display: none;
+}
+
+.icon-label {
+  cursor: pointer;
+}
+
+.icon-label svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* When the checkbox is checked, show the first icon */
+.icon-checkbox:checked + .icon-label .first-icon {
+  display: block;
+}
+
+.icon-checkbox:checked + .icon-label .second-icon {
+  display: none;
+}
+
+/* When the checkbox is unchecked, show the second icon */
+.icon-checkbox:not(:checked) + .icon-label .first-icon {
+  display: none;
+}
+
+.icon-checkbox:not(:checked) + .icon-label .second-icon {
+  display: block;
+}
+
+/* NAVBAR */
+#downarrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: 8vh;
+  font-family: "Oswald";
+  transition: background-color 1s ease;
+}

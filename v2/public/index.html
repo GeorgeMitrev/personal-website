@@ -3,20 +3,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coffee Gallery</title>
+  <title>George Mitrev's Gallery</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Magnific Popup CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
 </head>
 <body>
-  <article>
-    <h1>George Mitrev is a super nice guy with a bunch of cool photos.</h1>
-    <p>But really, open the CSS panel for a nice little gradient you can use</p>
-  </article>
-  <main class="gallery">
-    <div class="gallery-track" id="gallery-track">
-      <!-- Images will be dynamically added here -->
+  <header id="theheader">
+    <a id="logo" class="logo" href="#">GEORGE MITREV</a>
+    <div class="icons">
+      <a href="#gallery-wrapper">
+        <!-- Updated Camera Icon -->
+        <svg id="image" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M19.5,0H4.5A4.505,4.505,0,0,0,0,4.5v15A4.505,4.505,0,0,0,4.5,24h15A4.505,4.505,0,0,0,24,19.5V4.5A4.505,4.505,0,0,0,19.5,0ZM4.5,3h15A1.5,1.5,0,0,1,21,4.5v15a1.492,1.492,0,0,1-.44,1.06l-8.732-8.732a4,4,0,0,0-5.656,0L3,15V4.5A1.5,1.5,0,0,1,4.5,3Z"/>
+          <circle cx="15.5" cy="7.5" r="2.5"/>
+        </svg>
+      </a>
+      <!-- New SVG Icon Toggle -->
+      <input type="checkbox" id="toggle-icon" class="icon-checkbox">
+      <label for="toggle-icon" class="icon-label">
+        <!-- First Icon (visible when checked) -->
+        <svg class="second-icon icon" xmlns="http://www.w3.org/2000/svg" id="light-on" data-name="Layer 1" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M16.5,0H7.5C4.467,0,2,2.467,2,5.5v13c0,3.033,2.467,5.5,5.5,5.5h9c3.033,0,5.5-2.467,5.5-5.5V5.5c0-3.033-2.467-5.5-5.5-5.5Zm2.5,18.5c0,1.378-1.122,2.5-2.5,2.5H7.5c-1.378,0-2.5-1.122-2.5-2.5V5.5c0-1.378,1.122-2.5,2.5-2.5h9c1.378,0,2.5,1.122,2.5,2.5v13ZM14.5,5h-5c-1.378,0-2.5,1.122-2.5,2.5v8.5c0,1.654,1.346,3,3,3h4c1.654,0,3-1.346,3-3V7.5c0-1.378-1.122-2.5-2.5-2.5Zm-.5,3v4h-4v-4h4Z"/>
+        </svg>
+        <!-- Second Icon (visible when unchecked) -->
+        <svg class="first-icon icon" xmlns="http://www.w3.org/2000/svg" id="light-off" data-name="Layer 1" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M16.5,0H7.5C4.467,0,2,2.467,2,5.5v13c0,3.033,2.467,5.5,5.5,5.5h9c3.033,0,5.5-2.467,5.5-5.5V5.5c0-3.033-2.467-5.5-5.5-5.5Zm2.5,18.5c0,1.378-1.122,2.5-2.5,2.5H7.5c-1.378,0-2.5-1.122-2.5-2.5V5.5c0-1.378,1.122-2.5,2.5-2.5h9c1.378,0,2.5,1.122,2.5,2.5v13ZM14,5h-4c-1.654,0-3,1.346-3,3v8.5c0,1.378,1.122,2.5,2.5,2.5h5c1.378,0,2.5-1.122,2.5-2.5V8c0-1.654-1.346-3-3-3Zm-4,11v-4h4v4h-4Z"/>
+        </svg>
+      </label>
     </div>
-  </main>
-  <div class="circle"></div>
+  </header>  
+  
+  <div class="gallery-title">
+    The best things in life are not things, they are moments.
+    <a href="#gallery-wrapper" class="gal-wrap">
+    <!--
+    <svg id="Layer_1" class="moving camera" height="75" viewBox="0 0 48 48" width="512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1">
+      <defs>
+          <linearGradient id="cameraGradient" gradientTransform="rotate(10)">
+              <stop offset="0%" stop-color="hsl(260deg 72% 50%)" />
+              <stop offset="20%" stop-color="hsl(265deg 77% 50%)" />
+              <stop offset="29%" stop-color="hsl(270deg 83% 50%)" />
+              <stop offset="36%" stop-color="hsl(275deg 89% 50%)" />
+              <stop offset="43%" stop-color="hsl(279deg 95% 50%)" />
+              <stop offset="50%" stop-color="hsl(284deg 100% 50%)" />
+              <stop offset="57%" stop-color="hsl(283deg 95% 55%)" />
+              <stop offset="64%" stop-color="hsl(282deg 89% 61%)" />
+              <stop offset="71%" stop-color="hsl(280deg 84% 66%)" />
+              <stop offset="80%" stop-color="hsl(279deg 78% 71%)" />
+              <stop offset="100%" stop-color="hsl(278deg 73% 77%)" />
+          </linearGradient>
+      </defs>
+      
+      <path fill="url(#cameraGradient)" d="m42 12h-6.93a2 2 0 0 1 -1.664-.891l-2.219-3.328a4 4 0 0 0 -3.328-1.781h-7.718a4 4 0 0 0 -3.328 1.781l-2.219 3.328a2 2 0 0 1 -1.664.891h-.93v-1a1 1 0 0 0 -1-1h-3a1 1 0 0 0 -1 1v1h-1a4 4 0 0 0 -4 4v21a4 4 0 0 0 4 4h36a4 4 0 0 0 4-4v-21a4 4 0 0 0 -4-4zm-18 25a11.5 11.5 0 1 1 11.5-11.5 11.5 11.5 0 0 1 -11.5 11.5z"/>
+      <path fill="url(#cameraGradient)" d="m24 18a7.5 7.5 0 1 0 7.5 7.5 7.5 7.5 0 0 0 -7.5-7.5zm0 12a4.505 4.505 0 0 1 -4.5-4.5 1 1 0 0 1 2 0 2.5 2.5 0 0 0 2.5 2.5 1 1 0 0 1 0 2z"/>
+    </svg>  
+    -->
+  </a>
+  </div> 
+  <!--
+  <input type="checkbox" id="toggle-svg" class="svg-checkbox">
+  <label for="toggle-svg" class="svg-label">
+      <svg class="light-dark glasses" id="layer_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="gradient" gradientTransform="rotate(10)">
+                <stop offset="0%" stop-color="hsl(260deg 72% 50%)" />
+                <stop offset="20%" stop-color="hsl(265deg 77% 50%)" />
+                <stop offset="29%" stop-color="hsl(270deg 83% 50%)" />
+                <stop offset="36%" stop-color="hsl(275deg 89% 50%)" />
+                <stop offset="43%" stop-color="hsl(279deg 95% 50%)" />
+                <stop offset="50%" stop-color="hsl(284deg 100% 50%)" />
+                <stop offset="57%" stop-color="hsl(283deg 95% 55%)" />
+                <stop offset="64%" stop-color="hsl(282deg 89% 61%)" />
+                <stop offset="71%" stop-color="hsl(280deg 84% 66%)" />
+                <stop offset="80%" stop-color="hsl(279deg 78% 71%)" />
+                <stop offset="100%" stop-color="hsl(278deg 73% 77%)" />
+            </linearGradient>
+        </defs>
+        <g>
+            <g><path d="m150.5869 341.3589c-47.0664 0-85.3584-38.292-85.3584-85.3589 4.6891-113.2407 166.0462-113.2067 170.7179.0006-.0001 47.0663-38.2921 85.3583-85.3595 85.3583zm0-155.7178c-38.7959 0-70.3584 31.563-70.3584 70.3589 3.8648 93.3411 136.8668 93.313 140.7179-.0005-.0001-38.7954-31.5636-70.3595-70.3584-70.3584z" fill="url(#gradient)" /></g>
+            <g><path d="m361.4131 341.3589c-47.0674 0-85.3594-38.292-85.3594-85.3589 4.6889-113.2397 166.0459-113.2077 170.7179.0006-.0001 47.0663-38.2921 85.3583-85.3585 85.3583zm0-155.7178c-38.7959 0-70.3594 31.563-70.3594 70.3589 3.8652 93.3401 136.8672 93.3139 140.7179-.0005-.0001-38.7954-31.5626-70.3584-70.3585-70.3584z" fill="url(#gradient)" /></g>
+            <g><path d="m221.584 231.499c-5.0993.0871-8.9266-5.3534-7.0233-10.1304 14.5716-38.2153 68.3389-38.3335 82.8778-.0023 1.4531 3.8779-.5127 8.2006-4.3916 9.6537-3.8789 1.4551-8.2012-.5122-9.6553-4.3916-4.3818-11.6943-15.6064-19.3677-27.9854-19.1348-11.835.2388-22.6045 7.9272-26.7969 19.1318-1.1279 3.0133-3.9872 4.8736-7.0253 4.8736z" fill="url(#gradient)" /></g>
+            <g><path d="m451.667 231.4971h-19.2559c-4.1426 0-7.5-3.3579-7.5-7.5s3.3574-7.5 7.5-7.5h19.2559c9.923.3403 9.9304 14.6572 0 15z" fill="url(#gradient)" /></g>
+            <g><path d="m79.5889 231.4971h-19.2559c-4.1426 0-7.5-3.3579-7.5-7.5s3.3574-7.5 7.5-7.5h19.2559c9.923.3403 9.9304 14.6572 0 15z" fill="url(#gradient)" /></g>
+            <g><path d="m181.9517 223.6824c-2.7727 4.4376-8.6179 5.7873-13.0555 3.0146-10.3939-7.0828-.8778-22.3061 10.041-16.07 4.4376 2.7726 5.7873 8.6178 3.0145 13.0554z" fill="url(#gradient)" /></g>
+            <g><path d="m108.3525 251.0996c-4.9042.0657-8.6698-4.9114-7.1981-9.6192 5.1718-17.5717 19.4384-31.1914 37.2323-35.5439 4.0244-.9863 8.083 1.4795 9.0674 5.5034.9844 4.0234-1.4795 8.083-5.5029 9.0669-12.6211 3.0869-22.7393 12.7461-26.4063 25.208-.9619 3.2671-3.9511 5.3848-7.1924 5.3848z" fill="url(#gradient)" /></g>
+            <g><path d="m319.1777 251.0996c-4.9048.0664-8.6702-4.9114-7.1972-9.6197 5.1718-17.5717 19.4384-31.1909 37.2323-35.5434 4.0244-.9863 8.083 1.4795 9.0674 5.5034.9844 4.0234-1.4795 8.083-5.5029 9.0669-12.6211 3.0869-22.7393 12.7466-26.4082 25.2085-.9609 3.2666-3.9502 5.3843-7.1914 5.3843z" fill="url(#gradient)" /></g>
+        </g>
+    </svg>
+    <svg class="light-dark sunglasses" height="512px" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 2384.24 2384.24" width="512px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+          <linearGradient id="layerGradient" gradientTransform="rotate(75)">
+              <stop offset="0%" stop-color="hsl(260deg 72% 50%)" />
+              <stop offset="20%" stop-color="hsl(265deg 77% 50%)" />
+              <stop offset="29%" stop-color="hsl(270deg 83% 50%)" />
+              <stop offset="36%" stop-color="hsl(275deg 89% 50%)" />
+              <stop offset="43%" stop-color="hsl(279deg 95% 50%)" />
+              <stop offset="50%" stop-color="hsl(284deg 100% 50%)" />
+              <stop offset="57%" stop-color="hsl(283deg 95% 55%)" />
+              <stop offset="64%" stop-color="hsl(282deg 89% 61%)" />
+              <stop offset="71%" stop-color="hsl(280deg 84% 66%)" />
+              <stop offset="80%" stop-color="hsl(279deg 78% 71%)" />
+              <stop offset="100%" stop-color="hsl(278deg 73% 77%)" />
+          </linearGradient>
+      </defs>
+          <g transform="translate(-400, -100)">
+          <g><path d="M1086.84 1701.11C864.716 1701.11 684 1520.39 684 1298.26C706.13 763.834 1467.64 763.994 1489.69 1298.27C1489.69 1520.39 1308.97 1701.11 1086.84 1701.11Z" fill="url(#layerGradient)" fill-rule="nonzero" opacity="1" stroke="none"/></g>
+          <g><path d="M2081.82 1701.11C1859.69 1701.11 1678.97 1520.39 1678.97 1298.26C1701.1 763.838 2462.62 763.989 2484.66 1298.27C2484.66 1520.39 2303.95 1701.11 2081.82 1701.11Z" fill="url(#layerGradient)" fill-rule="nonzero" opacity="1" stroke="none"/></g>
+          <g><path d="M1421.91 1182.63C1397.84 1183.05 1379.78 1157.37 1388.76 1134.82C1457.53 954.47 1711.28 953.912 1779.9 1134.81C1786.76 1153.12 1777.48 1173.52 1759.17 1180.37C1740.87 1187.24 1720.47 1177.96 1713.6 1159.65C1692.93 1104.46 1639.95 1068.24 1581.53 1069.34C1525.68 1070.47 1474.85 1106.75 1455.06 1159.63C1449.74 1173.85 1436.25 1182.63 1421.91 1182.63Z" fill="url(#layerGradient)" fill-rule="nonzero" opacity="1" stroke="none"/></g>
+          <g><path d="M2507.77 1182.63L2416.89 1182.63C2397.34 1182.63 2381.5 1166.78 2381.5 1147.23C2381.5 1127.68 2397.34 1111.83 2416.89 1111.83L2507.77 1111.83C2554.6 1113.44 2554.63 1181.01 2507.77 1182.63Z" fill="url(#layerGradient)" fill-rule="nonzero" opacity="1" stroke="none"/></g>
+          <g><path d="M751.773 1182.63L660.896 1182.63C641.345 1182.63 625.5 1166.78 625.5 1147.23C625.5 1127.68 641.345 1111.83 660.896 1111.83L751.773 1111.83C798.603 1113.44 798.638 1181.01 751.773 1182.63Z" fill="url(#layerGradient)" fill-rule="nonzero" opacity="1" stroke="none"/></g>
+      </g>
+    </svg>
+  </label>
+  -->
+  <div id="downarrow" class="icons moving">
+    <a href="#gallery-wrapper">
+      <!-- Updated Down Arrow Icon -->
+      <svg id="arrow" class="icon" enable-background="new 0 0 32 32" height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
+        <g id="Layer_1">
+          <path d="m29.6043 10.528-12.0735 12.8281c-.83.8819-2.2315.8819-3.0615 0l-12.0736-12.8281c-.9071-.9639-.2238-2.5455 1.0998-2.5455h25.0089c1.3237 0 2.007 1.5816 1.0999 2.5455z" />
+        </g>
+      </svg>
+    </a>
+  </div>
+  <article class="gallery">
+    <div id="gallery-wrapper"></div>
+  </article>
+  <div class="gallery-title">
+    Contact Me. 
+  </div> 
+  
+  <!-- jQuery Library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Magnific Popup JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+  <!-- Your custom script -->
   <script src="gallery.js"></script>
 </body>
 </html>

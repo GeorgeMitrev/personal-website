@@ -1,114 +1,107 @@
-const gallery = document.querySelector('.gallery');
-const track = document.querySelector('.gallery-track');
-const cards = document.querySelectorAll('.card');
-const easing = 0.05;
-let startY = 0;
-let endY = 0;
-let raf;
-
-const lerp = (start, end, t) => start * (1 - t) + end * t;
-
-function updateScroll() {
-  startY = lerp(startY, endY, easing);
-  gallery.style.height = `${track.clientHeight}px`;
-  track.style.transform = `translateY(-${startY}px)`;
-  activateParallax();
-  raf = requestAnimationFrame(updateScroll);
-  if (startY.toFixed(1) === window.scrollY.toFixed(1)) cancelAnimationFrame(raf);
-}
-
-function startScroll() {
-  endY = window.scrollY;
-  cancelAnimationFrame(raf);
-  raf = requestAnimationFrame(updateScroll);
-}
-
-function parallax(card) {
-  const wrapper = card.querySelector('.card-image-wrapper');
-  const diff = card.offsetHeight - wrapper.offsetHeight;
-  const { top } = card.getBoundingClientRect();
-  const progress = top / window.innerHeight;
-  const yPos = diff * progress;
-  wrapper.style.transform = `translateY(${yPos}px)`;
-}
-
-const activateParallax = () => cards.forEach(parallax);
-
-function init() {
-  activateParallax();
-  startScroll();
-}
-
-window.addEventListener('load', updateScroll, false);
-window.addEventListener('scroll', init, false);
-window.addEventListener('resize', updateScroll, false);
-
-console.clear();
-
-const circleElement = document.querySelector('.circle');
-
-const mouse = { x: 0, y: 0 };
-const previousMouse = { x: 0, y: 0 };
-const circle = { x: 0, y: 0 };
-
-let currentScale = 0;
-let currentAngle = 0;
-
-window.addEventListener('mousemove', (e) => {
-  mouse.x = e.x;
-  mouse.y = e.y;
-});
-
-const speed = 0.17;
-
-const tick = () => {
-  circle.x += (mouse.x - circle.x) * speed;
-  circle.y += (mouse.y - circle.y) * speed;
-  const translateTransform = `translate(${circle.x}px, ${circle.y}px)`;
-
-  const deltaMouseX = mouse.x - previousMouse.x;
-  const deltaMouseY = mouse.y - previousMouse.y;
-  previousMouse.x = mouse.x;
-  previousMouse.y = mouse.y;
-  const mouseVelocity = Math.min(Math.sqrt(deltaMouseX ** 2 + deltaMouseY ** 2) * 4, 150);
-  const scaleValue = (mouseVelocity / 150) * 0.5;
-  currentScale += (scaleValue - currentScale) * speed;
-  const scaleTransform = `scale(${1 + currentScale}, ${1 - currentScale})`;
-
-  const angle = Math.atan2(deltaMouseY, deltaMouseX) * 180 / Math.PI;
-  if (mouseVelocity > 20) {
-    currentAngle = angle;
-  }
-  const rotateTransform = `rotate(${currentAngle}deg)`;
-
-  circleElement.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`;
-
-  window.requestAnimationFrame(tick);
-}
-
-tick();
-
 document.addEventListener('DOMContentLoaded', function () {
-  const galleryTrack = document.getElementById('gallery-track');
+  const galleryWrapper = document.getElementById('gallery-wrapper');
 
   // Fetch the list of images from the server
   fetch('/images')
     .then(response => response.json())
     .then(images => {
       images.forEach(image => {
-        const card = document.createElement('div');
-        card.classList.add('card');
+        // Create elements for each image
+        const galleryLink = document.createElement('a');
+        galleryLink.href = `/pictures/${image}`;
+        galleryLink.classList.add('gallery-link');
         
-        const cardImageWrapper = document.createElement('div');
-        cardImageWrapper.classList.add('card-image-wrapper');
+        const figure = document.createElement('figure');
+        figure.classList.add('gallery-image');
         
         const img = document.createElement('img');
         img.src = `/pictures/${image}`;
         
-        cardImageWrapper.appendChild(img);
-        card.appendChild(cardImageWrapper);
-        galleryTrack.appendChild(card);
+        const caption = document.createElement('figcaption');
+        caption.textContent = "";
+        caption.classList.add('gallery-image-caption');
+        
+        figure.appendChild(img);
+        figure.appendChild(caption);
+        galleryLink.appendChild(figure);
+        galleryWrapper.appendChild(galleryLink);
       });
+
+      // Reinitialize Magnific Popup after images are added
+      setTimeout(function() {
+        $('.gallery-link').magnificPopup({
+          type: 'image',
+          closeOnContentClick: true,
+          closeBtnInside: false,
+          mainClass: 'mfp-with-zoom mfp-img-mobile',
+          image: {
+            verticalFit: true,
+            titleSrc: (item) => item.el.find('figcaption').text() || item.el.attr('title')
+          },
+          zoom: {
+            enabled: true
+          },
+          gallery: {
+            enabled: true,
+            navigateByImgClick: false,
+            tCounter: ''
+          },
+          disableOn: () => $(window).width() > 640
+        });
+      }, 100);  // Slight delay to ensure images are fully loaded
     })
     .catch(err => console.error('Error fetching images:', err));
+});
+
+const checkbox = document.getElementById('toggle-icon');
+const body = document.body;
+const header = document.getElementById('theheader');
+const logo = document.getElementById('logo');
+const lighton = document.getElementById('light-on');
+const lightoff = document.getElementById('light-off');
+const image = document.getElementById('image');
+const arrow = document.getElementById('arrow')
+
+// Toggle background and text colors, including the body class for SVG handling
+checkbox.addEventListener('change', function() {
+  if (checkbox.checked) {
+    body.classList.add('dark-mode'); // Add class for white background mode
+    body.style.backgroundColor = '#050908';
+    header.style.backgroundColor = '#050908';
+    logo.style.color = '#ffffff';
+    lighton.style.fill = '#ffffff'
+    lightoff.style.fill = '#ffffff'
+    image.style.fill = '#ffffff';
+    arrow.style.fill = '#ffffff';
+  } else {
+    body.classList.remove('dark-mode'); // Remove class for dark background mode
+    body.style.backgroundColor = '#ffffff';
+    header.style.backgroundColor = '#ffffff';
+    logo.style.color = '#050908';
+    lighton.style.fill = '#050908';
+    lightoff.style.fill = '#050908';
+    image.style.fill = '#050908';
+    arrow.style.fill = '#050908';
+  }
+});
+
+window.addEventListener("load", () => {
+  const header = document.getElementById("theheader");
+  const galleryTitle = document.querySelector(".gallery-title");
+
+  if (header && galleryTitle) {
+    // Match the width of the header to the width of the gallery-title
+    const galleryTitleWidth = galleryTitle.getBoundingClientRect().width;
+    header.style.width = galleryTitleWidth + "px";
+  }
+});
+
+window.addEventListener("resize", () => {
+  const header = document.getElementById("theheader");
+  const galleryTitle = document.querySelector(".gallery-title");
+
+  if (header && galleryTitle) {
+    const galleryTitleWidth = galleryTitle.getBoundingClientRect().width;
+    header.style.width = galleryTitleWidth + "px";
+  }
 });
