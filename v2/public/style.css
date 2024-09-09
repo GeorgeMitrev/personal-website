@@ -50,10 +50,10 @@ body {
 
 .gallery {
   column-gap: 0;
-  padding: 0.25rem;
-  width: 100vw;
+  padding: 0.25rem; /* Increase padding on the sides */
+  width: (100vw - 0.5rem);
+  border-bottom: 0px solid #050908;
 }
-
 
 @media (min-width: 480px) {
   .gallery {
@@ -97,14 +97,13 @@ body {
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
 }
 
-/* CODE FOR MOVING CAMERA */
+/* CODE FOR MOVING ARROW */
 .moving {
-  animation: attempt 1s ease-in-out infinite;
+  animation: animated 1s ease-in-out infinite;
   color: white;
-  /* margin-bottom: 65px; */
 }
 
-@keyframes attempt {
+@keyframes animated {
   0%,
   100% {
       transform: translate(0, 0);
@@ -113,29 +112,6 @@ body {
   50% {
       transform: translate(0, 5px);
   }
-}
-
-.camera {
-  position: absolute;
-  top: 85vh; /* Places the arrow directly below the text */
-  right: 1ch; /* Positions the arrow at the center of the container */
-  transform: translateX(calc(10ch)); /* Shifts the arrow to the right based on text width (half of 20ch) */
-  margin-top: 20px; /* Adds space between the text and the arrow */
-  width: 50px;
-  fill: linear-gradient(
-    75deg,
-    hsl(260deg 72% 50%) 0%,
-    hsl(265deg 77% 50%) 20%,
-    hsl(270deg 83% 50%) 29%,
-    hsl(275deg 89% 50%) 36%,
-    hsl(279deg 95% 50%) 43%,
-    hsl(284deg 100% 50%) 50%,
-    hsl(283deg 95% 55%) 57%,
-    hsl(282deg 89% 61%) 64%,
-    hsl(280deg 84% 66%) 71%,
-    hsl(279deg 78% 71%) 80%,
-    hsl(278deg 73% 77%) 100%
-  );
 }
 
 /* CODE FOR LIGHT & DARK MODE */
@@ -168,29 +144,6 @@ body {
 
 .svg-checkbox:not(:checked) + .svg-label .sunglasses {
   display: block;
-}
-
-.light-dark {
-  position: absolute;
-  top: 85vh; /* Places the arrow directly below the text */
-  left: 1ch; /* Positions the arrow at the center of the container */
-  transform: translateX(calc(10ch)); /* Shifts the arrow to the right based on text width (half of 20ch) */
-  margin-top: 20px; /* Adds space between the text and the arrow */
-  width: 50px;
-  fill: linear-gradient(
-    75deg,
-    hsl(260deg 72% 50%) 0%,
-    hsl(265deg 77% 50%) 20%,
-    hsl(270deg 83% 50%) 29%,
-    hsl(275deg 89% 50%) 36%,
-    hsl(279deg 95% 50%) 43%,
-    hsl(284deg 100% 50%) 50%,
-    hsl(283deg 95% 55%) 57%,
-    hsl(282deg 89% 61%) 64%,
-    hsl(280deg 84% 66%) 71%,
-    hsl(279deg 78% 71%) 80%,
-    hsl(278deg 73% 77%) 100%
-  );
 }
 
 /* NAVBAR */
@@ -270,7 +223,7 @@ body {
   display: block;
 }
 
-/* NAVBAR */
+/* DOWN ARROW */
 #downarrow {
   display: flex;
   align-items: center;
@@ -279,4 +232,75 @@ body {
   height: 8vh;
   font-family: "Oswald";
   transition: background-color 1s ease;
+}
+
+/* FOOTER */
+#site-footer {
+  padding: 2rem 0;
+  background-color: #ffffff; /* Dark background to match your theme */
+  color: #050908; /* Light text color */
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+}
+
+#site-footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+#site-footer .social {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#site-footer .social li {
+  display: inline-block;
+  margin: 0 0.5rem;
+}
+
+#site-footer .social li a {
+  color: #ff4629;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+#site-footer .social li a:hover {
+  color: #f3f3f3;
+}
+
+#site-footer .credits {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 5rem;
+}
+
+#site-footer .credits a {
+  color: #ff4629;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#site-footer .credits a:hover {
+  color: #f3f3f3;
+}
+
+@media (max-width: 768px) {
+  #site-footer .credits {
+    font-size: 0.9rem;
+  }
+}
+
+/* UP ARROW IN FOOTER */
+.up-arrow {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+#up-arrow {
+  fill: #050908;
+  transition: fill 0.3s ease;
 }

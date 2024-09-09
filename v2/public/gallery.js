@@ -1,12 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const galleryWrapper = document.getElementById('gallery-wrapper');
+  const galleryWrapper = document.getElementById('gallery');
+  const arrow = document.getElementById('arrow');
+  const imageIcon = document.getElementById('image');
+  
+  // Disable the click events initially
+  arrow.style.pointerEvents = 'none';
+  imageIcon.style.pointerEvents = 'none';
 
   // Fetch the list of images from the server
   fetch('/images')
     .then(response => response.json())
     .then(images => {
       images.forEach(image => {
-        // Create elements for each image
         const galleryLink = document.createElement('a');
         galleryLink.href = `/pictures/${image}`;
         galleryLink.classList.add('gallery-link');
@@ -26,6 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
         galleryLink.appendChild(figure);
         galleryWrapper.appendChild(galleryLink);
       });
+
+      // Once content is loaded, re-enable the click events
+      arrow.style.pointerEvents = 'auto';
+      imageIcon.style.pointerEvents = 'auto';
 
       // Reinitialize Magnific Popup after images are added
       setTimeout(function() {
@@ -60,7 +69,8 @@ const logo = document.getElementById('logo');
 const lighton = document.getElementById('light-on');
 const lightoff = document.getElementById('light-off');
 const image = document.getElementById('image');
-const arrow = document.getElementById('arrow')
+const arrow = document.getElementById('arrow');
+const footer = document.getElementById('site-footer');
 
 // Toggle background and text colors, including the body class for SVG handling
 checkbox.addEventListener('change', function() {
@@ -73,6 +83,8 @@ checkbox.addEventListener('change', function() {
     lightoff.style.fill = '#ffffff'
     image.style.fill = '#ffffff';
     arrow.style.fill = '#ffffff';
+    footer.style.backgroundColor = '#050908';
+    footer.style.color = '#ffffff';
   } else {
     body.classList.remove('dark-mode'); // Remove class for dark background mode
     body.style.backgroundColor = '#ffffff';
@@ -82,6 +94,8 @@ checkbox.addEventListener('change', function() {
     lightoff.style.fill = '#050908';
     image.style.fill = '#050908';
     arrow.style.fill = '#050908';
+    footer.style.backgroundColor = '#ffffff';
+    footer.style.color = '#050908';
   }
 });
 
