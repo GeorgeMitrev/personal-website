@@ -1,4 +1,4 @@
-/* Add smooth scrolling to the page */
+/*  GENERAL  */
 html {
   scroll-behavior: smooth;
 }
@@ -15,6 +15,7 @@ body {
   transition: background-color 1s ease;
 }
 
+/*  GALLERY  */
 .gallery-title {
   display: flex;
   position: relative;
@@ -79,24 +80,6 @@ body {
   height: auto;
 }
 
-.gallery-image-caption {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0);
-  padding: 1em;
-  transition: all 0.2s ease;
-  font-weight: 600;
-  text-align: center;
-}
-
-.gallery-image:hover .gallery-image-caption {
-  color: rgba(255, 255, 255, 1);
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
-}
-
 /* CODE FOR MOVING ARROW */
 .moving {
   animation: animated 1s ease-in-out infinite;
@@ -128,24 +111,6 @@ body {
   height: 100px;
 }
 
-/* When the checkbox is checked, show the glasses SVG */
-.svg-checkbox:checked + .svg-label .glasses {
-  display: block;
-}
-
-.svg-checkbox:checked + .svg-label .sunglasses {
-  display: none;
-}
-
-/* When the checkbox is unchecked, show the sunglasses SVG */
-.svg-checkbox:not(:checked) + .svg-label .glasses {
-  display: none;
-}
-
-.svg-checkbox:not(:checked) + .svg-label .sunglasses {
-  display: block;
-}
-
 /* NAVBAR */
 #theheader {
   display: flex;
@@ -168,11 +133,6 @@ body {
   color: #050908;
   transition: 0.5s all;
   cursor: default;
-}
-
-#current {
-  color: #ff4629;
-  border-bottom: 3px solid #333;
 }
 
 .icons {
@@ -247,28 +207,6 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-}
-
-#site-footer .social {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-}
-
-#site-footer .social li {
-  display: inline-block;
-  margin: 0 0.5rem;
-}
-
-#site-footer .social li a {
-  color: #ff4629;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-}
-
-#site-footer .social li a:hover {
-  color: #f3f3f3;
 }
 
 #site-footer .credits {

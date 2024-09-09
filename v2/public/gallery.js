@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const arrow = document.getElementById('arrow');
   const imageIcon = document.getElementById('image');
   
-  // Disable the click events initially
+  // Disable click events
   arrow.style.pointerEvents = 'none';
   imageIcon.style.pointerEvents = 'none';
 
-  // Fetch the list of images from the server
+  // Fetch images from the server
   fetch('/images')
     .then(response => response.json())
     .then(images => {
@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
         galleryWrapper.appendChild(galleryLink);
       });
 
-      // Once content is loaded, re-enable the click events
+      // Once content is loaded, re-enable click events
       arrow.style.pointerEvents = 'auto';
       imageIcon.style.pointerEvents = 'auto';
 
-      // Reinitialize Magnific Popup after images are added
+      // Reinitialize magnific popup after images are added
       setTimeout(function() {
         $('.gallery-link').magnificPopup({
           type: 'image',
@@ -57,11 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           disableOn: () => $(window).width() > 640
         });
-      }, 100);  // Slight delay to ensure images are fully loaded
+      }, 100);  // Delay to ensure images are fully loaded
     })
     .catch(err => console.error('Error fetching images:', err));
 });
 
+// Grabbing DOM Elements
 const checkbox = document.getElementById('toggle-icon');
 const body = document.body;
 const header = document.getElementById('theheader');
@@ -72,10 +73,10 @@ const image = document.getElementById('image');
 const arrow = document.getElementById('arrow');
 const footer = document.getElementById('site-footer');
 
-// Toggle background and text colors, including the body class for SVG handling
+// Toggle background and text colors, including the body class for SVG handling for light & dark mode
 checkbox.addEventListener('change', function() {
   if (checkbox.checked) {
-    body.classList.add('dark-mode'); // Add class for white background mode
+    body.classList.add('dark-mode'); 
     body.style.backgroundColor = '#050908';
     header.style.backgroundColor = '#050908';
     logo.style.color = '#ffffff';
@@ -86,7 +87,7 @@ checkbox.addEventListener('change', function() {
     footer.style.backgroundColor = '#050908';
     footer.style.color = '#ffffff';
   } else {
-    body.classList.remove('dark-mode'); // Remove class for dark background mode
+    body.classList.remove('dark-mode'); 
     body.style.backgroundColor = '#ffffff';
     header.style.backgroundColor = '#ffffff';
     logo.style.color = '#050908';
@@ -99,6 +100,7 @@ checkbox.addEventListener('change', function() {
   }
 });
 
+// Matching width of navbar to text
 window.addEventListener("load", () => {
   const header = document.getElementById("theheader");
   const galleryTitle = document.querySelector(".gallery-title");
@@ -109,7 +111,6 @@ window.addEventListener("load", () => {
     header.style.width = galleryTitleWidth + "px";
   }
 });
-
 window.addEventListener("resize", () => {
   const header = document.getElementById("theheader");
   const galleryTitle = document.querySelector(".gallery-title");
